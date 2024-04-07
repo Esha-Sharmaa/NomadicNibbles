@@ -6,10 +6,17 @@ const RecipeCard = ({ title, summary, image }) => {
         return truncated +"...";
     }
     return (
-      <div className="flex flex-col items-center p-4">
-        <img src={image} alt="recipe" className="object-cover rounded" />
+      <div className="flex flex-col items-center  ">
+        <img
+          src={image}
+          alt="recipe"
+          className="w-[100%] object-cover rounded"
+        />
         <div>
-          <h3 className="font-sans text-wrap font-bold"> {truncateString(title)} </h3>
+          <h3 className="font-sans text-wrap font-bold p-2">
+            {" "}
+            {truncateString(title)}{" "}
+          </h3>
         </div>
       </div>
     );
