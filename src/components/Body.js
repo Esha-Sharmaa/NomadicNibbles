@@ -97,27 +97,27 @@ const Body = () => {
   return (
     <div className="p-12 flex flex-col gap-10 ">
       {popularRecipes ? (
-        <RecipeList title={"Popular Recipes"} recipes={popularRecipes} />
+        <RecipeList id={"popular"} title={"Popular Recipes"} recipes={popularRecipes} />
       ) : (
         <SkeletonCards />
       )}
       {vegRecipes ? (
-        <RecipeList title={"Veg Recipes"} recipes={vegRecipes} />
+        <RecipeList id={"veg"} title={"Veg Recipes"} recipes={vegRecipes} />
       ) : (
         <SkeletonCards />
       )}
       {nonVegRecipes ? (
-        <RecipeList title={"Non-Veg Recipes"} recipes={nonVegRecipes} />
+        <RecipeList id={ "nonveg"} title={"Non-Veg Recipes"} recipes={nonVegRecipes} />
       ) : (
         <SkeletonCards />
       )}
       {indianRecipes ? (
-        <RecipeList title={"Indian Recipes"} recipes={indianRecipes} />
+        <RecipeList id={"indian"} title={"Indian Recipes"} recipes={indianRecipes} />
       ) : (
         <SkeletonCards />
       )}
       {latinRecipes ? (
-        <RecipeList title={"Latin Recipes"} recipes={latinRecipes} />
+        <RecipeList id={ "latin"} title={"Latin Recipes"} recipes={latinRecipes} />
       ) : (
         <SkeletonCards />
       )}
