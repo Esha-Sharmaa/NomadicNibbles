@@ -2,7 +2,8 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Header from "./components/Header";
 import RecipeDetail from "./components/RecipeDetail";  
 import Body from "./components/Body";
-
+import Footer from "./components/Footer"
+import SkeletonUI from "./components/SkeletonUi";
 function App() {
 
   return (
@@ -14,6 +15,7 @@ function App() {
           <Route path="/recipe/:recipeId" element={<RecipeDetail />}/>
         </Routes>
       </main>
+      <Footer />
     </Router>
   );
 }

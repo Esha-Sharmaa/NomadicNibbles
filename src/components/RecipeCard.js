@@ -13,9 +13,8 @@ const RecipeCard = ({ title, summary, image }) => {
           className="w-[100%] object-cover rounded"
         />
         <div>
-          <h3 className="font-sans text-wrap font-bold p-2">
-            {" "}
-            {truncateString(title)}{" "}
+          <h3 className="font-roboto text-wrap font-[500] p-2">
+            {truncateString(title)}
           </h3>
         </div>
       </div>

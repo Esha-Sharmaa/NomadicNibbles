@@ -1,6 +1,7 @@
 import RecipeList from "./RecipeList";
 import { useState, useEffect } from "react";
 import axios from "axios";
+import SkeletonCards from "./SkeletonCards";
 const Body = () => {
   const [popularRecipes, setPopularRecipes] = useState([]);
   const [vegRecipes, setVegRecipes] = useState([]);
@@ -23,7 +24,7 @@ const Body = () => {
           setPopularRecipes(JSON.parse(popularRecipesFromStorage));
         } else {
           const popularResponse = await axios.get(
-            "https://api.spoonacular.com/recipes/random?number=10&apiKey=6432fb333e1244d59229c9e2c60d179d"
+            `https://api.spoonacular.com/recipes/random?number=10&apiKey=${process.env.REACT_APP_API_KEY}`
           );
           setPopularRecipes(popularResponse.data.recipes);
           localStorage.setItem(
@@ -36,7 +37,7 @@ const Body = () => {
           setVegRecipes(JSON.parse(vegRecipesFromStorage));
         } else {
           const vegResponse = await axios.get(
-            "https://api.spoonacular.com/recipes/random?number=10&tags=vegetarian&apiKey=6432fb333e1244d59229c9e2c60d179d"
+            `https://api.spoonacular.com/recipes/random?number=10&tags=vegetarian&apiKey=${process.env.REACT_APP_API_KEY}`
           );
           setVegRecipes(vegResponse.data.recipes);
           localStorage.setItem(
@@ -48,7 +49,7 @@ const Body = () => {
           setNonVegRecipes(JSON.parse(nonVegRecipesFromStorage));
         } else {
           const nonVegResponse = await axios.get(
-            "https://api.spoonacular.com/recipes/random?number=10&tags=non-vegetarian&apiKey=6432fb333e1244d59229c9e2c60d179d"
+            `https://api.spoonacular.com/recipes/random?number=10&tags=non-vegetarian&apiKey=${process.env.REACT_APP_API_KEY}`
           );
           setNonVegRecipes(nonVegResponse.data.recipes);
           localStorage.setItem(
@@ -60,7 +61,7 @@ const Body = () => {
           setIndianRecipes(JSON.parse(indianRecipesFromStorage));
         } else {
           const indianResponse = await axios.get(
-            "https://api.spoonacular.com/recipes/random?number=10&cuisine=Indian&apiKey=6432fb333e1244d59229c9e2c60d179d"
+            `https://api.spoonacular.com/recipes/random?number=10&cuisine=Indian&apiKey=${process.env.REACT_APP_API_KEY}`
           );
           setIndianRecipes(indianResponse.data.recipes);
           localStorage.setItem(
@@ -72,7 +73,7 @@ const Body = () => {
           setLatinRecipes(JSON.parse(latinRecipesFromStorage));
         } else {
           const latinResponse = await axios.get(
-            "https://api.spoonacular.com/recipes/random?number=10&cuisine=Latin%20American&apiKey=6432fb333e1244d59229c9e2c60d179d"
+            `https://api.spoonacular.com/recipes/random?number=10&cuisine=Latin%20American&apiKey=${process.env.REACT_APP_API_KEY}`
           );
           setLatinRecipes(latinResponse.data.recipes);
           localStorage.setItem(
@@ -90,18 +91,30 @@ const Body = () => {
 
   return (
     <div className="px-12 flex flex-col gap-10">
-      {popularRecipes && (
+      {popularRecipes ? (
         <RecipeList title={"Popular Recipes"} recipes={popularRecipes} />
+      ) : (
+        <SkeletonCards />
       )}
-      {vegRecipes && <RecipeList title={"Veg Recipes"} recipes={vegRecipes} />}
-      {nonVegRecipes && (
+      {vegRecipes ? (
+        <RecipeList title={"Veg Recipes"} recipes={vegRecipes} />
+      ) : (
+        <SkeletonCards />
+      )}
+      {nonVegRecipes ? (
         <RecipeList title={"Non-Veg Recipes"} recipes={nonVegRecipes} />
+      ) : (
+        <SkeletonCards />
       )}
-      {indianRecipes && (
+      {indianRecipes ? (
         <RecipeList title={"Indian Recipes"} recipes={indianRecipes} />
+      ) : (
+        <SkeletonCards />
       )}
-      {latinRecipes && (
+      {latinRecipes ? (
         <RecipeList title={"Latin Recipes"} recipes={latinRecipes} />
+      ) : (
+        <SkeletonCards />
       )}
     </div>
   );
