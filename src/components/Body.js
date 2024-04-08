@@ -95,7 +95,7 @@ const Body = () => {
     return <Error error={error} />;
   }
   return (
-    <div className="p-12 flex flex-col gap-10 ">
+    <div className="p-4 pb-8 md:p-12 flex flex-col gap-10 ">
       {popularRecipes ? (
         <RecipeList id={"popular"} title={"Popular Recipes"} recipes={popularRecipes} />
       ) : (
