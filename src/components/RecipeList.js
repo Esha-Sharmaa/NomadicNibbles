@@ -45,15 +45,3 @@ const RecipeList = ({ id, title, recipes }) => {
   );
 };
 export default RecipeList;
-
-
-{/* <MdChevronRight
-  className="bg-white rounded-full absolute right-[5%] bottom-[30%] cursor-pointer opacity-50 hover:opacity-100 hidden group-hover:block"
-  size={40}
-  onClick={slideRight}
-/>;
-            <MdChevronLeft
-              className="bg-white rounded-full absolute  left-[5%] top-[50%] cursor-pointer opacity-50 hover:opacity-100 hidden group-hover:block"
-              size={40}
-              onClick={slideLeft}
-            />; */}

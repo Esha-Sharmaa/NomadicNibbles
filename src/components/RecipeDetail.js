@@ -22,7 +22,6 @@ const RecipeDetail = () => {
       );
       setRecipe(recipeDetailResponse.data);
     } catch (e) {
-      console.log("error is ", e);
       setError(e);
     }
   };
