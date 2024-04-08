@@ -3,7 +3,6 @@ import Header from "./components/Header";
 import RecipeDetail from "./components/RecipeDetail";  
 import Body from "./components/Body";
 import Footer from "./components/Footer"
-import SkeletonUI from "./components/SkeletonUi";
 function App() {
 
   return (

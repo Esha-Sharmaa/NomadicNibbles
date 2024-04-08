@@ -2,12 +2,14 @@ import RecipeList from "./RecipeList";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import SkeletonCards from "./SkeletonCards";
+import Error from "./Error";
 const Body = () => {
   const [popularRecipes, setPopularRecipes] = useState([]);
   const [vegRecipes, setVegRecipes] = useState([]);
   const [nonVegRecipes, setNonVegRecipes] = useState([]);
   const [indianRecipes, setIndianRecipes] = useState([]);
   const [latinRecipes, setLatinRecipes] = useState([]);
+  const [error, setError] = useState(null);
   useEffect(() => {
     const fetchRecipes = async () => {
       try {
@@ -82,15 +84,18 @@ const Body = () => {
           );
         }
       } catch (error) {
-        console.error("Error fetching recipes:", error);
+        setError(error);
       }
     };
 
     fetchRecipes();
   }, []);
-
+  // Render the Error component if there's an error
+  if (error) {
+    return <Error error={error} />;
+  }
   return (
-    <div className="px-12 flex flex-col gap-10">
+    <div className="p-12 flex flex-col gap-10 ">
       {popularRecipes ? (
         <RecipeList title={"Popular Recipes"} recipes={popularRecipes} />
       ) : (
